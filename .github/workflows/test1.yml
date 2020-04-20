@@ -24,12 +24,8 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
 
-    # Runs a single command using the runners shell
-    - name: Vemos que hay
-      run: ls /usr/bin
-
-    # Runs a set of commands using the runners shell
-    - name: Vemos si esta el workspace
+    - name: Run ERC
       run: |
-        echo $GITHUB_WORKSPACE
-        ls -la $GITHUB_WORKSPACE
+        cd $GITHUB_WORKSPACE
+        [ -f *.sch ] && kiplot -s update_xml,run_drc -i 
+
