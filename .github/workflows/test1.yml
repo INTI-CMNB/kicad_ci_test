@@ -26,12 +26,11 @@ jobs:
 
     - name: Run ERC
       run: |
-        cd $GITHUB_WORKSPACE
-        mkdir -p $HOME/.config/kicad
-        cp kicad/* $HOME/.config/kicad
-        mkdir Fabrication
-        kiplot -v -s update_xml,run_drc -i || echo Falla
-        mv *.ogv Fabrication
+        #cd $GITHUB_WORKSPACE
+        #mkdir -p $HOME/.config/kicad
+        #cp kicad/* $HOME/.config/kicad
+        #mkdir Fabrication
+        kiplot -v -d Fabrication -s update_xml,run_drc -i
 
     - name: Recuperar video
       uses: actions/upload-artifact@v1
