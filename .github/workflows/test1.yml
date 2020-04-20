@@ -28,16 +28,15 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE
         mkdir -p $HOME/.config/kicad
+        cp kicad/* $HOME/.config/kicad
+        mkdir Fabrication
         kiplot -v -s update_xml,run_drc -i || echo Falla
-        ls *.ogv
-        mkdir /result
-        cp *.ogv /result
-        ls /result/*.ogv
+        mv *.ogv Fabrication
 
     - name: Recuperar video
       uses: actions/upload-artifact@v1
       with:
-        name: Video
-        path: run_erc_eeschema_screencast.ogv
+        name: Output
+        path: Fabrication
 
 
