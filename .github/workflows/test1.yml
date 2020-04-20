@@ -33,6 +33,8 @@ jobs:
         kiplot -v -s update_xml,run_drc -i || echo Falla
         kiplot -v -s update_xml,run_drc -i || echo Falla
         cp *.ogv /
+        ls *.ogv
+        ls /*.ogv
 
     - name: Recuperar video
       uses: actions/upload-artifact@v1
