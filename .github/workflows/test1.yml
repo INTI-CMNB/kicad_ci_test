@@ -25,7 +25,7 @@ jobs:
 
     - name: Run ERC
       run: |
-        [ -f *.sch ] && kiplot -v -d Fabrication -s update_xml,run_drc -i
+        [ -f *.sch ] && kiplot  -d Fabrication -s update_xml,run_drc -i
 
     - name: Recuperar resultados
       uses: actions/upload-artifact@v1
@@ -43,7 +43,7 @@ jobs:
 
     - name: Run DRC
       run: |
-        [ -f *.kicad_pcb ] && kiplot -v -d Fabrication -s update_xml,run_erc -i
+        [ -f *.kicad_pcb ] && kiplot  -d Fabrication -s update_xml,run_erc -i
 
     - name: Recuperar resultados
       uses: actions/upload-artifact@v1
@@ -62,7 +62,7 @@ jobs:
 
     - name: Run schematic stuff
       run: |
-        [ -f *.sch ] && kiplot -v -d Fabrication -s run_drc,run_erc print_sch
+        [ -f *.sch ] && kiplot  -d Fabrication -s run_drc,run_erc print_sch
 
     - name: Recuperar resultados
       uses: actions/upload-artifact@v1
@@ -81,7 +81,7 @@ jobs:
 
     - name: Run PCB stuff
       run: |
-        [ -f *.kicad_pcb ] && kiplot -v -d Fabrication -s all print_front gerbers
+        [ -f *.kicad_pcb ] && kiplot  -d Fabrication -s all print_front gerbers
 
     - name: Recuperar resultados
       uses: actions/upload-artifact@v1
