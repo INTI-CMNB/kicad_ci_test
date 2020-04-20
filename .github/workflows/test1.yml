@@ -28,5 +28,5 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE
         mkdir -p $HOME/.config/kicad
-        [ -f *.sch ] && kiplot -s update_xml,run_drc -i 
+        [ -f *.sch ] && kiplot -v -s update_xml,run_drc -i
 
