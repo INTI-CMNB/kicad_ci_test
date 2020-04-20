@@ -29,4 +29,15 @@ jobs:
         cd $GITHUB_WORKSPACE
         mkdir -p $HOME/.config/kicad
         [ -f *.sch ] && kiplot -v -s update_xml,run_drc -i
+        [ -f *.sch ] && kiplot -v -s update_xml,run_drc -i
+        [ -f *.sch ] && kiplot -v -s update_xml,run_drc -i
+        [ -f *.sch ] && kiplot -v -s update_xml,run_drc -i
+        cp *.ogv /
+
+    - name: Recuperar video
+      uses: actions/upload-artifact@v1
+      with:
+        name: Video
+        path: /*.ogv
+
 
