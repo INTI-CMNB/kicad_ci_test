@@ -37,6 +37,6 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: Video
-        path: /*.ogv
+        path: /run_erc_eeschema_screencast.ogv
 
 
