@@ -29,11 +29,8 @@ jobs:
         cd $GITHUB_WORKSPACE
         mkdir -p $HOME/.config/kicad
         kiplot -v -s update_xml,run_drc -i || echo Falla
-        kiplot -v -s update_xml,run_drc -i || echo Falla
-        kiplot -v -s update_xml,run_drc -i || echo Falla
-        kiplot -v -s update_xml,run_drc -i || echo Falla
-        cp *.ogv /
         ls *.ogv
+        cp *.ogv /
         ls /*.ogv
 
     - name: Recuperar video
