@@ -1,3 +1,5 @@
 # kicad_ci_test
-Test for Continuous Integration using KiCad
-.
+
+![CI](https://github.com/INTI-CMNB/kicad_ci_test/workflows/CI/badge.svg)
+
+Test for Continuous Integration using KiCad.
