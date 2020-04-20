@@ -30,13 +30,14 @@ jobs:
         mkdir -p $HOME/.config/kicad
         kiplot -v -s update_xml,run_drc -i || echo Falla
         ls *.ogv
-        cp *.ogv /
-        ls /*.ogv
+        mkdir /result
+        cp *.ogv /result
+        ls /result/*.ogv
 
     - name: Recuperar video
       uses: actions/upload-artifact@v1
       with:
         name: Video
-        path: /__w/kicad_ci_test/kicad_ci_test/
+        path: run_erc_eeschema_screencast.ogv
 
 
