@@ -2,7 +2,7 @@
 
   (general
     (thickness 1.6)
-    (drawings 4)
+    (drawings 5)
     (tracks 18)
     (zones 0)
     (modules 4)
@@ -35,6 +35,7 @@
 
   (setup
     (last_trace_width 0.25)
+    (user_trace_width 1)
     (trace_clearance 0.2)
     (zone_clearance 0.508)
     (zone_45_only no)
@@ -295,6 +296,9 @@
     )
   )
 
+  (gr_text Hello (at 188.7728 80.3656) (layer B.Cu)
+    (effects (font (size 1.5 1.5) (thickness 0.3)))
+  )
   (gr_line (start 167.64 91.44) (end 167.64 78.74) (layer Edge.Cuts) (width 0.05) (tstamp 5E9B6EDB))
   (gr_line (start 195.58 91.44) (end 167.64 91.44) (layer Edge.Cuts) (width 0.05))
   (gr_line (start 195.58 78.74) (end 195.58 91.44) (layer Edge.Cuts) (width 0.05))
@@ -305,11 +309,11 @@
   (segment (start 179.15 87.63) (end 179.15 90.09) (width 1) (layer B.Cu) (net 1))
   (segment (start 179.15 90.09) (end 179.07 90.17) (width 0.25) (layer B.Cu) (net 1))
   (segment (start 179.07 90.17) (end 189.08 90.17) (width 1) (layer B.Cu) (net 1))
-  (segment (start 170.18 90.17) (end 179.07 90.17) (width 1) (layer B.Cu) (net 1))
-  (segment (start 168.91 88.9) (end 170.18 90.17) (width 1) (layer B.Cu) (net 1))
-  (segment (start 171.45 83.82) (end 170.1 83.82) (width 0.25) (layer B.Cu) (net 1))
-  (segment (start 168.91 85.01) (end 168.91 88.9) (width 1) (layer B.Cu) (net 1))
-  (segment (start 170.1 83.82) (end 168.91 85.01) (width 1) (layer B.Cu) (net 1))
+  (segment (start 169.799 83.82) (end 171.45 83.82) (width 1) (layer B.Cu) (net 1))
+  (segment (start 168.91 84.709) (end 169.799 83.82) (width 1) (layer B.Cu) (net 1))
+  (segment (start 168.91 88.9) (end 168.91 84.709) (width 1) (layer B.Cu) (net 1))
+  (segment (start 179.07 90.17) (end 170.18 90.17) (width 1) (layer B.Cu) (net 1))
+  (segment (start 170.18 90.17) (end 168.91 88.9) (width 1) (layer B.Cu) (net 1))
   (segment (start 191.77 82.95) (end 191.77 83.82) (width 1) (layer B.Cu) (net 2))
   (segment (start 191.37 82.55) (end 191.77 82.95) (width 0.25) (layer B.Cu) (net 2))
   (segment (start 186.69 82.55) (end 191.37 82.55) (width 1) (layer B.Cu) (net 2))

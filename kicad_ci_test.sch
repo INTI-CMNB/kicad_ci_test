@@ -4,8 +4,8 @@ EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
-Title ""
-Date ""
+Title "Test"
+Date "2020-04-20"
 Rev ""
 Comp ""
 Comment1 ""
