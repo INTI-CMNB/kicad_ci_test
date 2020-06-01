@@ -1,0 +1,100 @@
+name: CI
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master ]
+    paths:
+      - 'test_subdir/test_subdir.sch'
+      - 'test_subdir/test_subdir.kicad_pcb'
+  pull_request:
+    branches: [ master ]
+    paths:
+      - 'test_subdir/test_subdir.sch'
+      - 'test_subdir/test_subdir.kicad_pcb'
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  ERC:
+    runs-on: ubuntu-latest
+    container: setsoft/kicad_auto:latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: 'true'
+
+    - name: Run ERC
+      run: |
+        make -C test_subdir/ erc
+
+    - name: Retrieve results
+      uses: actions/upload-artifact@v1
+      with:
+        name: ERC_Output
+        path: test_subdir/Fabrication
+
+  DRC:
+    runs-on: ubuntu-latest
+    container: setsoft/kicad_auto:latest
+    needs: ERC
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: 'true'
+
+    - name: Run DRC
+      run: |
+        make -C test_subdir/ drc
+
+    - name: Retrieve results
+      uses: actions/upload-artifact@v1
+      with:
+        name: DRC_Output
+        path: test_subdir/Fabrication
+
+  FabSch:
+    name: Schematic fabrication files
+    runs-on: ubuntu-latest
+    container: setsoft/kicad_auto:latest
+    needs: ERC
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: 'true'
+
+    - name: Run schematic stuff
+      run: |
+        make -C test_subdir/ sch_fab
+
+    - name: Retrieve results
+      uses: actions/upload-artifact@v1
+      with:
+        name: FabSch_Output
+        path: test_subdir/Fabrication
+
+  FabPCB:
+    name: PCB fabrication files
+    runs-on: ubuntu-latest
+    container: setsoft/kicad_auto:latest
+    needs: DRC
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: 'true'
+
+    - name: Run PCB stuff
+      run: |
+        make -C test_subdir/ pcb_fab
+
+    - name: Retrieve results
+      uses: actions/upload-artifact@v1
+      with:
+        name: FabPCB_Output
+        path: test_subdir/Fabrication
+
+
