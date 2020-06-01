@@ -8,22 +8,44 @@ on:
     paths:
       - 'test_subdir/test_subdir.sch'
       - 'test_subdir/test_subdir.kicad_pcb'
+      - '.github/workflows/test_subdir.yml'
   pull_request:
     branches: [ master ]
     paths:
       - 'test_subdir/test_subdir.sch'
       - 'test_subdir/test_subdir.kicad_pcb'
+      - '.github/workflows/test_subdir.yml'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  ERC:
+  get_submodules:
     runs-on: ubuntu-latest
-    container: setsoft/kicad_auto:latest
 
     steps:
     - uses: actions/checkout@v2
       with:
         submodules: 'true'
+
+    - name: Store submodule
+      uses: actions/upload-artifact@v1
+      with:
+        name: Submodule
+        path: test_subdir/lib
+
+
+  ERC:
+    runs-on: ubuntu-latest
+    container: setsoft/kicad_auto:latest
+    needs: get_submodules
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Get submodule
+      uses: actions/download-artifact@v2
+      with:
+        name: Submodule
+        path: test_subdir/lib
 
     - name: Run ERC
       run: |
@@ -42,8 +64,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
+    - name: Get submodule
+      uses: actions/download-artifact@v2
       with:
-        submodules: 'true'
+        name: Submodule
+        path: test_subdir/lib
 
     - name: Run DRC
       run: |
@@ -63,8 +89,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
+    - name: Get submodule
+      uses: actions/download-artifact@v2
       with:
-        submodules: 'true'
+        name: Submodule
+        path: test_subdir/lib
 
     - name: Run schematic stuff
       run: |
@@ -84,8 +114,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
+    - name: Get submodule
+      uses: actions/download-artifact@v2
       with:
-        submodules: 'true'
+        name: Submodule
+        path: test_subdir/lib
 
     - name: Run PCB stuff
       run: |
