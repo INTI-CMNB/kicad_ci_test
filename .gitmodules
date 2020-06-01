@@ -1,0 +1,3 @@
+[submodule "test_subdir/lib"]
+	path = test_subdir/lib
+	url = https://github.com/INTI-CMNB/kicad_ci_test_lib
