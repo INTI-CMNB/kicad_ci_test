@@ -4,16 +4,16 @@ name: CI
 # events but only for the master branch
 on:
   push:
-    branches: [ master ]
     paths:
       - 'test_subdir/test_subdir.sch'
       - 'test_subdir/test_subdir.kicad_pcb'
+      - 'test_subdir/*.yaml'
       - '.github/workflows/test_subdir.yml'
   pull_request:
-    branches: [ master ]
     paths:
       - 'test_subdir/test_subdir.sch'
       - 'test_subdir/test_subdir.kicad_pcb'
+      - 'test_subdir/*.yaml'
       - '.github/workflows/test_subdir.yml'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
