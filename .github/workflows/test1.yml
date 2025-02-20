@@ -6,47 +6,52 @@ on:
   push:
     branches: [ master ]
     paths:
-      - 'kicad_ci_test.sch'
+      - 'kicad_ci_test.kicad_sch'
       - 'kicad_ci_test.kicad_pcb'
   pull_request:
     branches: [ master ]
     paths:
-      - 'kicad_ci_test.sch'
+      - 'kicad_ci_test.kicad_sch'
       - 'kicad_ci_test.kicad_pcb'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   ERC:
     runs-on: ubuntu-latest
-    container: setsoft/kicad_auto:latest
+    # Here use kicad_auto_test:latest to get all features, i.e. Blender render
+    # Or even use ghcr.io/inti-cmnb/kicad8_auto_full:dev to get the last fixes
+    # In this case change "8" by the KiCad you need. Also don't forget to change this tag
+    # once your project is finished, pointing to a stable KiBot release
+    # Use the same for all steps
+    container: ghcr.io/inti-cmnb/kicad8_auto:latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - name: Run ERC
       run: |
-        [ -f *.sch ] && kiplot  -d Fabrication -s update_xml,run_drc -i
+        [ -f *.kicad_sch ] && kiplot  -d Fabrication -s update_xml,run_drc -i
 
     - name: Retrieve results
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v4
       with:
         name: ERC_Output
         path: Fabrication
 
   DRC:
     runs-on: ubuntu-latest
-    container: setsoft/kicad_auto:latest
+    container: ghcr.io/inti-cmnb/kicad8_auto:latest
     needs: ERC
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - name: Run DRC
       run: |
         [ -f *.kicad_pcb ] && kiplot  -d Fabrication -s update_xml,run_erc -i
 
     - name: Retrieve results
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v4
       with:
         name: DRC_Output
         path: Fabrication
@@ -54,18 +59,18 @@ jobs:
   FabSch:
     name: Schematic fabrication files
     runs-on: ubuntu-latest
-    container: setsoft/kicad_auto:latest
+    container: ghcr.io/inti-cmnb/kicad8_auto:latest
     needs: ERC
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - name: Run schematic stuff
       run: |
-        [ -f *.sch ] && kiplot  -d Fabrication -s run_drc,run_erc print_sch
+        [ -f *.kicad_sch ] && kiplot  -d Fabrication -s run_drc,run_erc print_sch
 
     - name: Retrieve results
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v4
       with:
         name: FabSch_Output
         path: Fabrication
@@ -73,18 +78,18 @@ jobs:
   FabPCB:
     name: PCB fabrication files
     runs-on: ubuntu-latest
-    container: setsoft/kicad_auto:latest
+    container: ghcr.io/inti-cmnb/kicad8_auto:latest
     needs: DRC
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - name: Run PCB stuff
       run: |
         [ -f *.kicad_pcb ] && kiplot  -d Fabrication -s all print_front gerbers
 
     - name: Retrieve results
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v4
       with:
         name: FabPCB_Output
         path: Fabrication

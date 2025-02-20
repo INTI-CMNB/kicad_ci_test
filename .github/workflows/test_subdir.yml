@@ -6,13 +6,13 @@ on:
   push:
     branches: [ master ]
     paths:
-      - 'test_subdir/test_subdir.sch'
+      - 'test_subdir/test_subdir.kicad_sch'
       - 'test_subdir/test_subdir.kicad_pcb'
       - '.github/workflows/test_subdir.yml'
   pull_request:
     branches: [ master ]
     paths:
-      - 'test_subdir/test_subdir.sch'
+      - 'test_subdir/test_subdir.kicad_sch'
       - 'test_subdir/test_subdir.kicad_pcb'
       - '.github/workflows/test_subdir.yml'
 
@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
       with:
         submodules: 'true'
 
@@ -35,11 +35,11 @@ jobs:
 
   ERC:
     runs-on: ubuntu-latest
-    container: setsoft/kicad_auto:latest
+    container: ghcr.io/inti-cmnb/kicad8_auto:latest
     needs: get_submodules
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - name: Get submodule
       uses: actions/download-artifact@v4
@@ -59,11 +59,11 @@ jobs:
 
   DRC:
     runs-on: ubuntu-latest
-    container: setsoft/kicad_auto:latest
+    container: ghcr.io/inti-cmnb/kicad8_auto:latest
     needs: ERC
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - name: Get submodule
       uses: actions/download-artifact@v4
@@ -84,11 +84,11 @@ jobs:
   FabSch:
     name: Schematic fabrication files
     runs-on: ubuntu-latest
-    container: setsoft/kicad_auto:latest
+    container: ghcr.io/inti-cmnb/kicad8_auto:latest
     needs: ERC
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - name: Get submodule
       uses: actions/download-artifact@v4
@@ -109,11 +109,11 @@ jobs:
   FabPCB:
     name: PCB fabrication files
     runs-on: ubuntu-latest
-    container: setsoft/kicad_auto:latest
+    container: ghcr.io/inti-cmnb/kicad8_auto:latest
     needs: DRC
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - name: Get submodule
       uses: actions/download-artifact@v4
@@ -130,5 +130,3 @@ jobs:
       with:
         name: FabPCB_Output
         path: test_subdir/Fabrication
-
-
