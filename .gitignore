@@ -1,5 +1,7 @@
 kicad_ci_test.erc
 drc_result.rpt
 kicad_ci_test.csv
-kicad_ci_test.kicad_pcb-bak
-kicad_ci_test.sch-bak
+*.kicad_pcb-bak
+*.sch-bak
+*.kicad_prl
+*-backups
