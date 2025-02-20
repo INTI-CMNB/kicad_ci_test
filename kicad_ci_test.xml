@@ -2,7 +2,7 @@
 <export version="E">
   <design>
     <source>/home/salvador/0Data/Eccosur/kicad_ci_test/kicad_ci_test.kicad_sch</source>
-    <date>2025-02-20T14:01:07-0300</date>
+    <date>2025-02-20T14:12:07-0300</date>
     <tool>Eeschema 8.0.8+1</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
@@ -147,10 +147,10 @@
   </libparts>
   <libraries>
     <library logical="Connector">
-      <uri>/usr/share/kicad/symbols//Connector.kicad_sym</uri>
+      <uri>/usr/share/kicad/symbols/Connector.kicad_sym</uri>
     </library>
     <library logical="Device">
-      <uri>/usr/share/kicad/symbols//Device.kicad_sym</uri>
+      <uri>/usr/share/kicad/symbols/Device.kicad_sym</uri>
     </library>
   </libraries>
   <nets>

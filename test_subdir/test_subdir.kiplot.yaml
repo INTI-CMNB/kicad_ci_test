@@ -5,6 +5,7 @@ kiplot:
 preflight:
   erc: true
   drc: true
+  update_xml: true
 
 outputs:
 

@@ -1,4 +1,4 @@
-name: CI
+name: Simple KiBot CI/CD test
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
@@ -8,11 +8,13 @@ on:
     paths:
       - 'kicad_ci_test.kicad_sch'
       - 'kicad_ci_test.kicad_pcb'
+      - '.github/workflows/test1.yml'
   pull_request:
     branches: [ master ]
     paths:
       - 'kicad_ci_test.kicad_sch'
       - 'kicad_ci_test.kicad_pcb'
+      - '.github/workflows/test1.yml'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -48,7 +50,7 @@ jobs:
 
     - name: Run DRC
       run: |
-        [ -f *.kicad_pcb ] && kiplot  -d Fabrication -s update_xml,run_erc -i
+        [ -f *.kicad_pcb ] && kiplot  -d Fabrication -s update_xml,erc -i
 
     - name: Retrieve results
       uses: actions/upload-artifact@v4
@@ -67,7 +69,7 @@ jobs:
 
     - name: Run schematic stuff
       run: |
-        [ -f *.kicad_sch ] && kiplot  -d Fabrication -s run_drc,run_erc print_sch
+        [ -f *.kicad_sch ] && kiplot  -d Fabrication -s drc,erc print_sch
 
     - name: Retrieve results
       uses: actions/upload-artifact@v4
