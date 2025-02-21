@@ -16,6 +16,9 @@ on:
       - 'kicad_ci_test.kicad_pcb'
       - 'kicad_ci_test.kibot.yaml'
       - '.github/workflows/test1.yml'
+  schedule:
+    # Run on Wednesday @ 5:43 to keep the artifacts alive
+    - cron: '43 5 * * 3'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:

@@ -19,6 +19,9 @@ on:
       - 'test_subdir/test_subdir.kicad_pcb'
       - 'test_subdir/test_subdir.kibot.yaml'
       - '.github/workflows/test_subdir.yml'
+  schedule:
+    # Run on Wednesday @ 5:43 to keep the artifacts alive
+    - cron: '43 5 * * 3'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
