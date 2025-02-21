@@ -22,37 +22,18 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  get_submodules:
+  ERC:
     runs-on: ubuntu-latest
+    container: ghcr.io/inti-cmnb/kicad8_auto:latest
 
     steps:
     - uses: actions/checkout@v4
       with:
         submodules: 'true'
 
-    - name: Store submodule
-      uses: actions/upload-artifact@v4
-      with:
-        name: Submodule
-        path: test_subdir/lib
-
-
-  ERC:
-    runs-on: ubuntu-latest
-    container: ghcr.io/inti-cmnb/kicad8_auto:latest
-    needs: get_submodules
-
-    steps:
-    - uses: actions/checkout@v4
-
-    - name: Get submodule
-      uses: actions/download-artifact@v4
-      with:
-        name: Submodule
-        path: test_subdir/lib
-
     - name: Run ERC
       run: |
+        ls -la test_subdir/
         make -C test_subdir/ erc
 
     - name: Retrieve results
@@ -68,12 +49,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-
-    - name: Get submodule
-      uses: actions/download-artifact@v4
       with:
-        name: Submodule
-        path: test_subdir/lib
+        submodules: 'true'
 
     - name: Run DRC
       run: |
@@ -93,12 +70,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-
-    - name: Get submodule
-      uses: actions/download-artifact@v4
       with:
-        name: Submodule
-        path: test_subdir/lib
+        submodules: 'true'
 
     - name: Run schematic stuff
       run: |
@@ -118,12 +91,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-
-    - name: Get submodule
-      uses: actions/download-artifact@v4
       with:
-        name: Submodule
-        path: test_subdir/lib
+        submodules: 'true'
 
     - name: Run PCB stuff
       run: |
