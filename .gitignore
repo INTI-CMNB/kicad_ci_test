@@ -5,3 +5,4 @@ kicad_ci_test.csv
 *.sch-bak
 *.kicad_prl
 *-backups
+*.epr
