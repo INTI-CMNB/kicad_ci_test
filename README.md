@@ -1,6 +1,7 @@
 # kicad_ci_test
 
-![CI](https://github.com/INTI-CMNB/kicad_ci_test/workflows/CI/badge.svg)
+![main test](https://github.com/INTI-CMNB/kicad_ci_test/actions/workflows/test1.yml/badge.svg)
+![subdir](https://github.com/INTI-CMNB/kicad_ci_test/actions/workflows/test_subdir.yml/badge.svg)
 
 Test for Continuous Integration using KiCad.
 
