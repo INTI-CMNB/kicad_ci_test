@@ -24,14 +24,12 @@ In this file we:
 ```
 on:
   push:
-    branches: [ master ]
     paths:
       - 'kicad_ci_test.kicad_sch'
       - 'kicad_ci_test.kicad_pcb'
       - 'kicad_ci_test.kibot.yaml'
       - '.github/workflows/test1.yml'
   pull_request:
-    branches: [ master ]
     paths:
       - 'kicad_ci_test.kicad_sch'
       - 'kicad_ci_test.kicad_pcb'

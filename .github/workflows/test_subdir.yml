@@ -1,18 +1,19 @@
 name: Sub-dir and sub-project KiBot CI/CD example
 
 # Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
+# events
 # If any of the listed file changes we run the workflow
 on:
   push:
-    branches: [ master ]
+    # Use the following syntax to limit on which branches we run the workflow
+    # branches: [ master ]
     paths:
       - 'test_subdir/test_subdir.kicad_sch'
       - 'test_subdir/test_subdir.kicad_pcb'
       - 'test_subdir/test_subdir.kibot.yaml'
       - '.github/workflows/test_subdir.yml'
   pull_request:
-    branches: [ master ]
+    # branches: [ master ]
     paths:
       - 'test_subdir/test_subdir.kicad_sch'
       - 'test_subdir/test_subdir.kicad_pcb'
