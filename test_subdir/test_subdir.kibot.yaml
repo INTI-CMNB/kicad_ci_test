@@ -4,7 +4,8 @@ kibot:
 
 preflight:
   erc: true
-  drc: true
+  drc:
+    schematic_parity: true
 
 outputs:
   - name: 'print_sch'
