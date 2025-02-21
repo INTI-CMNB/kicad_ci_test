@@ -5,14 +5,12 @@ name: Simple KiBot CI/CD test
 # If any of the listed file changes we run the workflow
 on:
   push:
-    branches: [ master ]
     paths:
       - 'kicad_ci_test.kicad_sch'
       - 'kicad_ci_test.kicad_pcb'
       - 'kicad_ci_test.kibot.yaml'
       - '.github/workflows/test1.yml'
   pull_request:
-    branches: [ master ]
     paths:
       - 'kicad_ci_test.kicad_sch'
       - 'kicad_ci_test.kicad_pcb'
