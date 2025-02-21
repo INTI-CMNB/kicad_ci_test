@@ -84,39 +84,14 @@ erc:
 	kibot -d Fabrication -s drc -i
 ```
 
-Using a Makefile is just another way of doing things, you could put the commands in the GitHub worflow, but don't forget to change the working directory to *test_subdir*.
+Using a Makefile is just another way of doing things, you could put the commands in the GitHub worflow,
+but don't forget to change the working directory to *test_subdir*.
 
-Another detail is how to checkout the submodules. One option is to use the *submodules* option of the *checkout* action. But for this we need the *git* command, which isn't part of the default *kicad_auto* docker image.
-
-To solve this we use an auxiliar job called *get_submodules*, this job runs on the host operating system, which includes *git*, and does a checkout using:
+Another detail is how to checkout the submodules. One option is to use the *submodules* option of the
+*checkout* action, like this:
 
 ```
     - uses: actions/checkout@v4
       with:
         submodules: 'true'
 ```
-
-So now we have the submodules. Note that if you need to get submodules inside submodules you'll need to use *recursive* instead of *true*.
-
-Then this job creates an artifcat containig the submodule using:
-
-```
-    - name: Store submodule
-      uses: actions/upload-artifact@v4
-      with:
-        name: Submodule
-        path: test_subdir/lib
-```
-
-So then other jobs can get the needed files using:
-
-```
-    - name: Get submodule
-      uses: actions/download-artifact@v4
-      with:
-        name: Submodule
-        path: test_subdir/lib
-```
-
-In this way we get the submodules and we don't need to add *git* to *kicad_auto*.
-
