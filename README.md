@@ -83,7 +83,7 @@ This changes the workind directory to *test_subdir/* and then makes the *erc* ta
 
 ```
 erc:
-	kibot -d Fabrication -s run_drc,update_xml -i
+	kibot -d Fabrication -s drc -i
 ```
 
 Using a Makefile is just another way of doing things, you could put the commands in the GitHub worflow, but don't forget to change the working directory to *test_subdir*.
