@@ -1,5 +1,5 @@
-# Example KiPlot config file
-kiplot:
+# Example KiBot config file
+kibot:
   version: 1
 
 preflight:
