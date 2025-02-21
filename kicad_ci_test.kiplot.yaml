@@ -5,10 +5,8 @@ kiplot:
 preflight:
   erc: true
   drc: true
-  update_xml: true
 
 outputs:
-
   - name: 'print_sch'
     comment: "Print schematic (PDF)"
     type: pdf_sch_print
@@ -65,4 +63,17 @@ outputs:
       - layer: Edge.Cuts
         suffix: Edge_Cuts
 
+  - name: 'bom_html'
+    comment: "Bill of Materials in HTML format"
+    type: bom
+    dir: BoM
+    options:
+      format: HTML
+      normalize_values: true
+      columns:
+        - Row
+        - References
+        - Value
+        - Footprint
+        - Quantity Per PCB
 

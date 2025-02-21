@@ -5,7 +5,6 @@ kiplot:
 preflight:
   erc: true
   drc: true
-  update_xml: true
 
 outputs:
   - name: 'print_sch'
@@ -49,17 +48,26 @@ outputs:
 
   - name: 'bom_html'
     comment: "Bill of Materials in HTML format"
-    type: kibom
+    type: bom
     dir: BoM
     options:
-      format: HTML  # HTML or CSV
+      format: HTML
+      normalize_values: true
+      columns: &bom_cols
+        - Row
+        - References
+        - Value
+        - Footprint
+        - Quantity Per PCB
 
   - name: 'bom_csv'
     comment: "Bill of Materials in CSV format"
-    type: kibom
+    type: bom
     dir: BoM
     options:
-      format: CSV  # HTML or CSV
+      format: CSV
+      # Here we avoid repetition using the bom_cols anchor defined for the HTML output
+      columns: *bom_cols
 
   - name: 'gerbers'
     comment: "Gerbers for the board house"
