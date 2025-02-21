@@ -16,15 +16,22 @@ outputs:
     options:
       output: Schematic.pdf
 
+  # Top view with a transparent PCB core we see the bottom layer tracks
   - name: 'print_front'
-    comment: "Print F.Cu+Dwgs.User"
-    type: pdf_pcb_print
+    comment: "Print B.Cu+Dwgs.User like a transparent core"
+    type: pcb_print
     dir: .
     options:
       output_name: PCB_Top.pdf
-    layers:
-      - layer: B.Cu
-      - layer: F.SilkS
+      scaling: 6
+      pages:
+        - sheet: Bottom from top
+          layers:
+            - layer: Edge.Cuts
+            - B.Cu
+            - layer: F.Mask
+              color: '#14332440'
+            - layer: F.SilkS
 
   - name: 'gerbers'
     comment: "Gerbers for the board house"
