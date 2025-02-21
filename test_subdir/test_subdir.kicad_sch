@@ -6857,7 +6857,7 @@
 				)
 			)
 		)
-		(property "Value" "12k 1%"
+		(property "Value" "12k"
 			(at 111.76 120.2436 90)
 			(effects
 				(font
@@ -6890,6 +6890,14 @@
 					(size 1.27 1.27)
 				)
 				(hide yes)
+			)
+		)
+		(property "Tolerance" "1%"
+			(at 111.76 125.73 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "1"

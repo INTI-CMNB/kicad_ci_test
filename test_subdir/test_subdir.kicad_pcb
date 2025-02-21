@@ -1093,7 +1093,7 @@
 				)
 			)
 		)
-		(property "Datasheet" " ~"
+		(property "Datasheet" ""
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -2240,7 +2240,7 @@
 				)
 			)
 		)
-		(property "Value" "12k 1%"
+		(property "Value" "12k"
 			(at 2.54 2.37 0)
 			(layer "F.Fab")
 			(uuid "5e49eac9-e4f0-44a0-af17-e977e4f91d5a")
@@ -2283,6 +2283,19 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Tolerance" "1%"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a8367476-bc0e-45ba-b724-a27ff51f74b2")
+			(effects
+				(font
+					(size 1 1)
 					(thickness 0.15)
 				)
 			)
