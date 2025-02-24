@@ -11,6 +11,7 @@ on:
       - 'test_subdir/test_subdir.kicad_sch'
       - 'test_subdir/test_subdir.kicad_pcb'
       - 'test_subdir/test_subdir.kibot.yaml'
+      - 'test_subdir/Makefile'
       - '.github/workflows/test_subdir.yml'
   pull_request:
     # branches: [ master ]
@@ -18,6 +19,7 @@ on:
       - 'test_subdir/test_subdir.kicad_sch'
       - 'test_subdir/test_subdir.kicad_pcb'
       - 'test_subdir/test_subdir.kibot.yaml'
+      - 'test_subdir/Makefile'
       - '.github/workflows/test_subdir.yml'
   schedule:
     # Run on Wednesday @ 5:43 to keep the artifacts alive
