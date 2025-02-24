@@ -779,6 +779,15 @@
 				(hide yes)
 			)
 		)
+		(property "Tolerance" "5%"
+			(at 101.6 67.31 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "56e55574-aa43-47f8-aeef-2df66372d802")
 		)
