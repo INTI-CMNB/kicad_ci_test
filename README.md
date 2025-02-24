@@ -95,3 +95,11 @@ Another detail is how to checkout the submodules. One option is to use the *subm
       with:
         submodules: 'true'
 ```
+
+
+## Example using development images
+
+Sometimes a bug in KiBot might prevent using it. In this case report it [here](https://github.com/INTI-CMNB/KiBot/issues).
+
+Once the bug is fixed you can use the dev (development) docker images. You just need to chage *latest* by *dev*
+The following example shows it: [.github/workflows/test_using_dev.yml](https://github.com/INTI-CMNB/kicad_ci_test/blob/master/.github/workflows/test_using_dev.yml)
