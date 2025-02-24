@@ -2,6 +2,9 @@
 kibot:
   version: 1
 
+import:
+  - file: 3DRender_top
+
 preflight:
   erc: true
   drc:
