@@ -1379,7 +1379,7 @@
 			(pintype "passive")
 			(uuid "f73810eb-bb01-4e80-a344-1ee22df19237")
 		)
-		(model "${KICAD6_3DMODEL_DIR}/Connector_USB.3dshapes/USB_B_OST_USB-B1HSxx_Horizontal.wrl"
+		(model "${KIPRJMOD}/lib/USB-B1HSB007.wrl"
 			(offset
 				(xyz 0 0 0)
 			)
