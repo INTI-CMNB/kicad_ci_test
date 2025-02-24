@@ -91,7 +91,7 @@ jobs:
   FabPCB:
     name: PCB fabrication files
     runs-on: ubuntu-latest
-    container: ghcr.io/inti-cmnb/kicad8_auto:latest
+    container: ghcr.io/inti-cmnb/kicad8_auto_full:latest
     needs: DRC
 
     steps:

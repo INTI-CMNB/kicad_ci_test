@@ -24,8 +24,8 @@ on:
 jobs:
   ERC:
     runs-on: ubuntu-latest
-    # Here use kicad_auto_test:latest to get all features, i.e. Blender render
-    # Or even use ghcr.io/inti-cmnb/kicad8_auto_full:dev to get the last fixes
+    # Here use kicad8_auto:latest if you don't need all features, i.e. Blender render
+    # You can use ghcr.io/inti-cmnb/kicad8_auto_full:dev to get the last fixes
     # In this case change "8" by the KiCad you need. Also don't forget to change this tag
     # once your project is finished, pointing to a stable KiBot release
     # Use the same for all steps
@@ -73,7 +73,7 @@ jobs:
 
     - name: Run schematic stuff
       run: |
-        [ -f *.kicad_sch ] && kibot  -d Fabrication -s drc,erc print_sch
+        [ -f *.kicad_sch ] && kibot  -d Fabrication -s drc,erc print_sch bom_html
 
     - name: Retrieve results
       uses: actions/upload-artifact@v4
@@ -84,7 +84,8 @@ jobs:
   FabPCB:
     name: PCB fabrication files
     runs-on: ubuntu-latest
-    container: ghcr.io/inti-cmnb/kicad8_auto:latest
+    # Here we need Blender so we use the full image
+    container: ghcr.io/inti-cmnb/kicad8_auto_full:latest
     needs: DRC
 
     steps:
@@ -92,7 +93,7 @@ jobs:
 
     - name: Run PCB stuff
       run: |
-        [ -f *.kicad_pcb ] && kibot  -d Fabrication -s all print_front gerbers
+        [ -f *.kicad_pcb ] && kibot  -d Fabrication -s all print_front gerbers _blender_3d_top
 
     - name: Retrieve results
       uses: actions/upload-artifact@v4
