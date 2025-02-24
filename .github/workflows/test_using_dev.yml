@@ -9,13 +9,13 @@ on:
       - 'kicad_ci_test.kicad_sch'
       - 'kicad_ci_test.kicad_pcb'
       - 'kicad_ci_test.kibot.yaml'
-      - '.github/workflows/test1.yml'
+      - '.github/workflows/test_using_dev.yml'
   pull_request:
     paths:
       - 'kicad_ci_test.kicad_sch'
       - 'kicad_ci_test.kicad_pcb'
       - 'kicad_ci_test.kibot.yaml'
-      - '.github/workflows/test1.yml'
+      - '.github/workflows/test_using_dev.yml'
   schedule:
     # Run on Wednesday @ 5:43 to keep the artifacts alive
     - cron: '43 5 * * 3'
